@@ -1,8 +1,8 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'http://localhost:4200/api',
+  apiBaseUrl: 'https://vsddwpmyga.us-west-2.awsapprunner.com/api',
   keycloak: {
-    url: 'http://localhost:8080',
+    url: 'https://k4q2xqmsnc.us-east-1.awsapprunner.com',
     realm: 'app',
     clientId: 'frontend-spa',
     scope: ''
