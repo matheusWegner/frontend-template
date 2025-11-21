@@ -1,0 +1,27 @@
+version: 1.0
+runtime: nodejs18
+build:
+  commands:
+    pre-build:
+      - npm install
+    build:
+      - npm run build
+    post-build:
+      - echo "Build completed"
+
+run:
+  command: npm run start
+  network:
+    port: 4200
+    env: PORT
+  env:
+    - name: NODE_ENV
+      value: "production"
+    - name: API_URL
+      value: ""  # Set via App Runner environment variables (backend URL)
+    - name: KEYCLOAK_URL
+      value: ""  # Set via App Runner environment variables
+    - name: KEYCLOAK_REALM
+      value: "app"
+    - name: KEYCLOAK_CLIENT_ID
+      value: "frontend-spa"

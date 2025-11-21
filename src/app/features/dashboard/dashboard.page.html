@@ -1,0 +1,24 @@
+<section class="flex flex-col gap-6">
+  <header class="flex flex-col gap-6 rounded-2xl bg-slate-900 px-6 py-6 text-white shadow-2xl shadow-slate-900/40 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <p class="text-sm uppercase tracking-widest text-slate-300">Bem-vindo(a)</p>
+      <h2 class="text-3xl font-semibold leading-tight">{{ userName() }}</h2>
+    </div>
+    <button
+      type="button"
+      class="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-cyan-500/30 transition hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-wait"
+      (click)="pingApi()"
+      [disabled]="isLoading()"
+    >
+      {{ isLoading() ? 'Chamando...' : 'Ping API Protegida' }}
+    </button>
+  </header>
+
+  <article class="rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10">
+    <div class="mb-3 flex items-center gap-2 text-slate-500">
+      <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+      <h3 class="text-sm font-semibold tracking-wide uppercase">Resposta</h3>
+    </div>
+    <pre class="min-h-[120px] rounded-xl bg-slate-950 p-4 text-sky-100 shadow-inner shadow-slate-900/40">{{ response() }}</pre>
+  </article>
+</section>

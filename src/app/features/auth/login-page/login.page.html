@@ -1,0 +1,31 @@
+<section
+  class="min-h-screen bg-gradient-to-b from-indigo-600 via-indigo-800 to-slate-950 text-slate-50 flex items-center justify-center px-4 py-10"
+>
+  <div
+    class="w-full max-w-md bg-slate-900/80 backdrop-blur rounded-2xl p-10 shadow-2xl shadow-slate-950/60 space-y-6"
+  >
+    <header class="space-y-2">
+      <p class="text-sm font-medium tracking-wide uppercase text-indigo-200">Keycloak Social Starter</p>
+      <h1 class="text-3xl font-semibold leading-tight">Autenticação segura para a sua SPA Angular</h1>
+      <p class="text-slate-300 text-sm">Tenha Single Sign-On via Keycloak e chamadas à API protegidas por JWT.</p>
+    </header>
+
+    <button
+      type="button"
+      class="w-full rounded-xl bg-gradient-to-r from-indigo-400 via-indigo-500 to-fuchsia-500 px-5 py-3 text-base font-semibold shadow-lg shadow-indigo-500/40 transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-300 disabled:opacity-50 disabled:cursor-wait"
+      (click)="startLogin()"
+      [disabled]="isLoading()"
+    >
+      {{ isLoading() ? 'Redirecionando...' : 'Entrar com Keycloak' }}
+    </button>
+
+    <p class="text-sm text-slate-200">
+      Você será levado para o Keycloak e retornará automaticamente para o aplicativo. Caso já esteja autenticado,
+      iremos redirecioná-lo para o dashboard.
+    </p>
+
+    <p *ngIf="errorMessage()" class="rounded-xl border border-rose-400/60 bg-rose-500/10 px-4 py-3 text-sm text-rose-100">
+      {{ errorMessage() }}
+    </p>
+  </div>
+</section>
