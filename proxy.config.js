@@ -1,7 +1,7 @@
 const proxy = [
     {
         context: ['/api'],
-        target: 'http://localhost:8081',
+        target: 'https://fbf2vdjpf3.us-east-1.awsapprunner.com',
         secure: false,
         changeOrigin: true
     }
