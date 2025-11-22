@@ -54,8 +54,7 @@ export class LoginPage implements OnInit {
     this.isLoading.set(true);
     this.errorMessage.set(null);
     try {
-      const redirectUri = typeof window !== 'undefined' ? `${window.location.origin}/auth/login` : undefined;
-      await this.authService.login(redirectUri);
+      await this.authService.login();
     } catch (error) {
       console.error('[LoginPage] login error', error);
       this.errorMessage.set('Falha ao redirecionar para o Keycloak.');

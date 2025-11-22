@@ -92,7 +92,9 @@ export class KeycloakAuthService {
       return;
     }
 
-    const target = redirectUri ?? (typeof window !== 'undefined' ? window.location.href : undefined);
+    // Use environment.appUrl to ensure correct URL in production
+    const target = redirectUri ?? `${environment.appUrl}/auth/login`;
+    console.log('[KeycloakAuth] Login redirect URI:', target);
     const loginOptions: KeycloakLoginOptions = this.requestedScopes
       ? { redirectUri: target, scope: this.requestedScopes }
       : { redirectUri: target };
