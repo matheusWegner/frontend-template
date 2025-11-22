@@ -30,11 +30,18 @@ export class LoginPage implements OnInit {
 
   private async bootstrapSession() {
     try {
+      console.log('[LoginPage] Starting bootstrap, URL:', window.location.href);
+      
+      // Initialize Keycloak - it will automatically detect and process OAuth callback
       await this.authService.init();
+      
       if (this.authService.hasActiveSession()) {
+        console.log('[LoginPage] Session active, redirecting to:', this.redirectUrl());
         this.router.navigateByUrl(this.redirectUrl());
         return;
       }
+      
+      console.log('[LoginPage] No active session');
     } catch (error) {
       console.error('[LoginPage] initialization error', error);
       this.errorMessage.set('Não foi possível inicializar a autenticação. Tente novamente em instantes.');
