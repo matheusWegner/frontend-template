@@ -32,7 +32,6 @@ export class LoginPage implements OnInit {
     try {
       console.log('[LoginPage] Starting bootstrap, URL:', window.location.href);
       
-      // Initialize Keycloak - it will automatically detect and process OAuth callback
       await this.authService.init();
       
       if (this.authService.hasActiveSession()) {

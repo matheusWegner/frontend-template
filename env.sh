@@ -13,11 +13,18 @@ fi
 
 echo "Arquivo encontrado: $MAIN_JS"
 
-# Substitui as URLs
+# Substitui as URLs do localhost (para dev)
 sed -i "s|http://localhost:8080|${KEYCLOAK_URL:-http://localhost:8080}|g" $MAIN_JS
 sed -i "s|http://localhost:4200/api|${API_URL:-http://localhost:4200/api}|g" $MAIN_JS
+sed -i "s|http://localhost:4200|${APP_URL:-http://localhost:4200}|g" $MAIN_JS
+
+# Substitui as URLs hardcoded de produção (para permitir mudanças sem rebuild)
+sed -i "s|https://k4q2xqmsnc.us-east-1.awsapprunner.com|${KEYCLOAK_URL}|g" $MAIN_JS
+sed -i "s|https://vsddwpmyga.us-west-2.awsapprunner.com/api|${API_URL}|g" $MAIN_JS
+sed -i "s|https://vsddwpmyga.us-west-2.awsapprunner.com|${APP_URL}|g" $MAIN_JS
 
 echo "Variáveis substituídas com sucesso!"
+echo "APP_URL: ${APP_URL}"
 echo "KEYCLOAK_URL: ${KEYCLOAK_URL}"
 echo "API_URL: ${API_URL}"
 
