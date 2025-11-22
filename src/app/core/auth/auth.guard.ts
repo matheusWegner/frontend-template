@@ -6,11 +6,18 @@ export const authGuard: CanActivateFn = async (_route, state) => {
   const authService = inject(KeycloakAuthService);
   const router = inject(Router);
 
-  await authService.init();
+  console.log('[AuthGuard] Checking authentication for:', state.url);
+
+  if (!authService.isInitializationComplete()) {
+    console.log('[AuthGuard] Initializing Keycloak...');
+    await authService.init();
+  }
 
   if (authService.hasActiveSession()) {
+    console.log('[AuthGuard] Authentication successful');
     return true;
   }
 
+  console.log('[AuthGuard] No active session, redirecting to login');
   return router.createUrlTree(['/auth/login'], { queryParams: { redirectUrl: state.url } });
 };
