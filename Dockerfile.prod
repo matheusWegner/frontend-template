@@ -21,6 +21,6 @@ COPY --from=builder /app/dist/frontend/browser /usr/share/nginx/html
 COPY env.sh /env.sh
 RUN chmod +x /env.sh
 
-EXPOSE 4200
+EXPOSE 80
 
 ENTRYPOINT ["/env.sh"]

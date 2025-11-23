@@ -23,5 +23,4 @@ echo "APP_URL: ${APP_URL}"
 echo "KEYCLOAK_URL: ${KEYCLOAK_URL}"
 echo "API_URL: ${API_URL}"
 
-# Inicia o Nginx
 exec nginx -g 'daemon off;'
