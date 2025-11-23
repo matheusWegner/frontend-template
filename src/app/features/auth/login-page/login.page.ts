@@ -30,19 +30,14 @@ export class LoginPage implements OnInit {
 
   private async bootstrapSession() {
     try {
-      console.log('[LoginPage] Starting bootstrap, URL:', window.location.href);
       
       await this.authService.init();
       
       if (this.authService.hasActiveSession()) {
-        console.log('[LoginPage] Session active, redirecting to:', this.redirectUrl());
         this.router.navigateByUrl(this.redirectUrl());
         return;
       }
-      
-      console.log('[LoginPage] No active session');
     } catch (error) {
-      console.error('[LoginPage] initialization error', error);
       this.errorMessage.set('Não foi possível inicializar a autenticação. Tente novamente em instantes.');
     } finally {
       this.isLoading.set(false);

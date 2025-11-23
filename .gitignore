@@ -40,3 +40,17 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Environment variables
+.env
+.env.*
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs/
+
+# Build outputs
+*.js.map
+*.css.map
